@@ -80,6 +80,6 @@ if __name__ == "__main__":
     main()
 
 # Usage Examples:
-# 1. Basic usage: python dlpsim_DLPRegexTester.py "\d{3}-\d{2}-\d{4}" test.txt
-# 2. Case-insensitive: python dlpsim_DLPRegexTester.py "[a-z]+@[a-z]+\.com" test.txt -i
-# 3. Change the logging level: python dlpsim_DLPRegexTester.py "\d+" test.txt -l DEBUG
+# 1. Basic usage: python main.py "\d{3}-\d{2}-\d{4}" test.txt
+# 2. Case-insensitive: python main.py "[a-z]+@[a-z]+\.com" test.txt -i
+# 3. Change the logging level: python main.py "\d+" test.txt -l DEBUG
