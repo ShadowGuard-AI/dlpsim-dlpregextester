@@ -66,8 +66,11 @@ def main():
     # Core Functionality: Highlight matches and print to console.
     highlighted_text = highlight_matches(text, args.regex, args.ignore_case)
 
-    if highlighted_text is not None:
-        print(highlighted_text)
+    if highlighted_text is None:
+        # An invalid pattern is the one thing this tool exists to test, so
+        # it has to read as a failure. It used to print nothing and exit 0.
+        sys.exit(1)
+    print(highlighted_text)
 
 
 if __name__ == "__main__":
