@@ -16,30 +16,42 @@ def setup_argparse():
     parser.add_argument("file_path", help="The path to the text file to scan.")
     parser.add_argument("-i", "--ignore-case", action="store_true", help="Perform case-insensitive matching.")
     parser.add_argument("-l", "--log-level", choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'], default='INFO', help="Set the logging level.")
+    parser.add_argument("--redact", action="store_true", help="Mask the middle of each matched value, keeping only its first and last characters.")
     return parser
 
 
-def highlight_matches(text, regex, ignore_case=False):
+def mask_value(value):
+    """Masks the middle of a matched value."""
+    if len(value) <= 2:
+        return "*" * len(value)
+    return value[0] + "*" * (len(value) - 2) + value[-1]
+
+
+def highlight_matches(text, regex, ignore_case=False, redact=False):
     """
-    Highlights all matches of the regex in the text.
-    Uses ANSI escape codes to highlight the matches.
+    Highlights all matches of the regex in a single line of text.
+    Uses ANSI escape codes to highlight the matches. With redact, the
+    middle of each matched value is masked before highlighting.
+    Returns a pair: the highlighted line, or None on an invalid
+    pattern, and the number of matches found.
     """
     flags = re.IGNORECASE if ignore_case else 0
     try:
         matches = list(re.finditer(regex, text, flags=flags))
     except re.error as e:
         logging.error(f"Invalid regular expression: {e}")
-        return None  # Indicate an error
+        return None, 0  # Indicate an error
 
     highlighted_text = ""
     last_end = 0
     for match in matches:
         start, end = match.span()
+        shown = mask_value(text[start:end]) if redact else text[start:end]
         highlighted_text += text[last_end:start]
-        highlighted_text += f"\033[1;31m{text[start:end]}\033[0m"  # Red and bold highlight
+        highlighted_text += f"\033[1;31m{shown}\033[0m"  # Red and bold highlight
         last_end = end
     highlighted_text += text[last_end:]
-    return highlighted_text
+    return highlighted_text, len(matches)
 
 
 def main():
@@ -63,14 +75,25 @@ def main():
         logging.error(f"Error reading file: {e}")
         sys.exit(1)
 
-    # Core Functionality: Highlight matches and print to console.
-    highlighted_text = highlight_matches(text, args.regex, args.ignore_case)
-
-    if highlighted_text is None:
-        # An invalid pattern is the one thing this tool exists to test, so
-        # it has to read as a failure. It used to print nothing and exit 0.
+    if not text:
+        print("File is empty: no content was scanned.")
         sys.exit(1)
-    print(highlighted_text)
+
+    # Core Functionality: Print only the lines containing matches,
+    # with the matches highlighted. Lines without matches are not
+    # printed, so values the pattern does not select are not echoed.
+    total_matches = 0
+    for line in text.splitlines():
+        highlighted_line, count = highlight_matches(line, args.regex, args.ignore_case, args.redact)
+        if highlighted_line is None:
+            # An invalid pattern is the one thing this tool exists to test, so
+            # it has to read as a failure. It used to print nothing and exit 0.
+            sys.exit(1)
+        if count:
+            total_matches += count
+            print(highlighted_line)
+
+    print(f"Summary: {total_matches} matches found, {len(text.encode('utf-8'))} bytes scanned.")
 
 
 if __name__ == "__main__":
