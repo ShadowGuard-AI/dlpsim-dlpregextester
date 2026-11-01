@@ -46,6 +46,10 @@ def highlight_matches(text, regex, ignore_case=False, redact=False):
     last_end = 0
     for match in matches:
         start, end = match.span()
+        # Redaction covers the matches only. The rest of a printed
+        # line, including text right beside a masked value, goes to
+        # the terminal in clear, so --redact is not a promise that a
+        # shown line contains nothing sensitive.
         shown = mask_value(text[start:end]) if redact else text[start:end]
         highlighted_text += text[last_end:start]
         highlighted_text += f"\033[1;31m{shown}\033[0m"  # Red and bold highlight
@@ -82,6 +86,10 @@ def main():
     # Core Functionality: Print only the lines containing matches,
     # with the matches highlighted. Lines without matches are not
     # printed, so values the pattern does not select are not echoed.
+    # Matching runs one line at a time, which quietly redefines the
+    # pattern: ^ and $ anchor to each line as if MULTILINE were set,
+    # and a pattern written to span a line break can never match,
+    # because no single call ever sees two lines together.
     total_matches = 0
     for line in text.splitlines():
         highlighted_line, count = highlight_matches(line, args.regex, args.ignore_case, args.redact)
