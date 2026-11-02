@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" role="img" aria-label="The night watch in three bands: the sea swelling and foam dissolving in the far band with a distant ship holding station, flames leaning and sparks rising at the driftwood fire in the middle band while a lantern swings on its post, and gull feathers stirring on still sand beside a resting anchor chain in the near band">
+<rect width="900" height="300" fill="#09262C"/>
+<rect y="0" width="900" height="104" fill="#0E3A3F"/>
+<g stroke="#F2EFE6" stroke-width="2" fill="none" opacity="0.55">
+<path d="M-60 62 Q30 48 120 62 T300 62 T480 62 T660 62 T840 62 T1020 62"/>
+<animateTransform attributeName="transform" type="translate" values="0 0; 60 0; 0 0" dur="12s" repeatCount="indefinite"/></g>
+<g fill="#F2EFE6">
+<ellipse cx="140" cy="92" rx="16" ry="3"/><ellipse cx="420" cy="96" rx="12" ry="2.6"/><ellipse cx="700" cy="90" rx="18" ry="3"/>
+<animate attributeName="opacity" values="0.85; 0.15; 0.85" dur="9s" repeatCount="indefinite"/></g>
+<g>
+<animateTransform attributeName="transform" type="translate" values="0 0; 0 3; 0 0" dur="7s" repeatCount="indefinite"/>
+<polygon points="742,74 822,74 804,88 758,88" fill="#14181A"/>
+<rect x="772" y="56" width="22" height="18" fill="#14181A"/>
+<rect x="781" y="40" width="4" height="16" fill="#14181A"/>
+<circle cx="783" cy="64" r="4" fill="#E8A33D"/></g>
+<rect y="104" width="900" height="196" fill="#2E3A36"/>
+<g stroke="#C9BFA4" stroke-width="9" stroke-linecap="round">
+<line x1="300" y1="196" x2="430" y2="186"/><line x1="428" y1="200" x2="304" y2="184"/><line x1="322" y1="178" x2="408" y2="168"/></g>
+<g fill="#14181A"><circle cx="298" cy="196" r="5"/><circle cx="432" cy="186" r="5"/><circle cx="302" cy="184" r="5"/><circle cx="430" cy="200" r="5"/></g>
+<g>
+<animateTransform attributeName="transform" type="rotate" values="0 366 182; 4 366 182; 0 366 182; -3 366 182; 0 366 182" dur="6s" repeatCount="indefinite"/>
+<polygon points="344,182 358,138 366,120 376,142 388,182" fill="#B06E20"/>
+<polygon points="354,182 362,150 367,140 374,152 380,182" fill="#E8A33D"/>
+<ellipse cx="366" cy="168" rx="5" ry="7" fill="#F2EFE6"/></g>
+<g fill="#F2EFE6">
+<circle cx="338" cy="140" r="3"><animate attributeName="cy" values="140; 108" dur="4s" repeatCount="indefinite"/><animate attributeName="opacity" values="1; 0" dur="4s" repeatCount="indefinite"/></circle>
+<circle cx="392" cy="132" r="2.6"><animate attributeName="cy" values="132; 102" dur="5s" begin="1.2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1; 0" dur="5s" begin="1.2s" repeatCount="indefinite"/></circle></g>
+<g>
+<animateTransform attributeName="transform" type="rotate" values="-5 560 128; 5 560 128; -5 560 128" dur="8s" repeatCount="indefinite"/>
+<line x1="560" y1="112" x2="560" y2="128" stroke="#14181A" stroke-width="3"/>
+<rect x="550" y="128" width="20" height="26" fill="#E8A33D"/>
+<rect x="547" y="122" width="26" height="6" fill="#14181A"/></g>
+<rect x="556" y="154" width="8" height="52" fill="#14181A"/>
+<g fill="none" stroke="#14181A" stroke-width="6">
+<ellipse cx="52" cy="262" rx="26" ry="12"/><ellipse cx="112" cy="268" rx="26" ry="12"/><ellipse cx="172" cy="262" rx="26" ry="12"/><ellipse cx="232" cy="268" rx="26" ry="12"/></g>
+<g>
+<animateTransform attributeName="transform" type="rotate" values="0 640 258; 3 640 258; 0 640 258" dur="7s" repeatCount="indefinite"/>
+<polygon points="586,262 622,248 690,250 700,260 660,270 606,270" fill="#F2EFE6"/>
+<line x1="580" y1="260" x2="696" y2="258" stroke="#96907E" stroke-width="2"/></g>
+<g>
+<line x1="856" y1="196" x2="856" y2="262" stroke="#14181A" stroke-width="5"/>
+<g>
+<animateTransform attributeName="transform" type="rotate" values="0 856 198; 4 856 198; 0 856 198; -3 856 198; 0 856 198" dur="9s" repeatCount="indefinite"/>
+<polygon points="856,198 880,198 877,220 859,218" fill="#F2EFE6"/>
+<polygon points="856,224 878,224 875,244 859,242" fill="#E8A33D"/></g></g>
+</svg>

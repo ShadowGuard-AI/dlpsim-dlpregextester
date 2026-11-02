@@ -1,164 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dlpsim Dlpregextester: what it is, how it runs, where it stops</title>
-<meta name="description" content="Dlpsim Dlpregextester is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.">
-<style>
-:root {
-  --bg: #d6e0e6; --panel: #e8f0f4; --ink: #122230;
-  --mut: #ffffff;
-  --acc: #c4542c; --acc2: #266e82;
-  --line: #e8f0f4;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink);
-  font-family: 'Palatino Linotype', Palatino, serif; line-height: 1.55; }
-code, pre, .mono { font-family: 'Menlo', monospace; }
-a { color: var(--acc2); }
-.hero { padding: 3rem 6vw 1rem; }
-.hero img.banner { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; }
-.logo { width: 92px; height: 92px; border-radius: 18px;
-  border: 1px solid var(--line); }
-h1 { font-size: 2.4rem; margin: 0.4em 0 0.1em; }
-h2 { border-bottom: 2px solid var(--acc); padding-bottom: 0.2em;
-  margin-top: 2em; }
-.lede { font-size: 1.15rem; max-width: 62ch; }
-main { padding: 0 6vw 3rem; max-width: 1180px; margin: 0 auto; }
-.grid { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.card { background: var(--panel); border: 1px solid var(--line);
-  border-radius: 12px; padding: 1rem 1.2rem; }
-.card.pop { animation: rise 0.7s ease both; }
-@keyframes rise { from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; } }
-pre.code { background: #101014; color: #e8e6df; padding: 1rem 1.2rem;
-  border-radius: 12px; overflow-x: auto; font-size: 0.86rem;
-  border-left: 5px solid var(--acc); }
-table { border-collapse: collapse; width: 100%; }
-td, th { border-bottom: 1px solid var(--line); padding: 0.45rem 0.6rem;
-  text-align: left; }
-.shots { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.shots img { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; background: #f4f1e8; }
-footer { padding: 2rem 6vw; border-top: 1px solid var(--line);
-  color: var(--mut); }
-.rail { display: flex; gap: 1.2rem; align-items: flex-start; }
-.rail nav { position: sticky; top: 1rem; min-width: 180px; }
-@media (max-width: 760px) { .rail { flex-direction: column; }
-  .rail nav { position: static; } }
-@media (prefers-reduced-motion: reduce) {
-  .card.pop { animation: none; } * { scroll-behavior: auto; } }
-</style>
-</head>
-<body class="layout-rail">
-<!-- This page exists for dlpsim-dlpregextester alone: the layout (sidebar-rail),
-     the colors, and the type were picked for this project, not
-     shared with the other project pages. The code block below is
-     copied from the file it names, line for line. If it looks
-     plain, that is because the project is plain, and I would
-     rather the page match the project than dress it up. The one
-     thing I will not do here is oversell: what this project does
-     not do is stated on the page, not hidden from it. -->
-<header class="hero">
-  <img class="logo" src="assets/logo.png" alt="Dlpsim Dlpregextester logo">
-  <img class="banner" src="assets/banner.png" alt="">
-  <h1>Dlpsim Dlpregextester</h1>
-  <p class="mono"><a href="https://github.com/ShadowGuard-AI/dlpsim-dlpregextester">github.com/ShadowGuard-AI/dlpsim-dlpregextester</a></p>
-</header>
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><title>dlpsim-dlpregextester: Driftwood Bonfire Night Watch</title>
+<style>@font-face{font-family:Disp;src:url("fonts/BrunoAce.ttf")}@font-face{font-family:Text;src:url("fonts/Archivo.ttf")}
+body{background:#09262C;font-family:Text,sans-serif;color:#F2EFE6;margin:0}main{max-width:920px;margin:0 auto;padding:28px}
+h1,h2,h3{font-family:Disp,serif;color:#E8A33D}section{background:rgba(242,239,230,0.08);padding:18px 22px;margin:16px 0;border-left:4px solid #14181A}
+img{max-width:100%}button{background:#0E3A3F;color:#F2EFE6;border:2px dashed #F2EFE6;padding:14px 20px;margin:4px;font-family:Disp,serif}
+button:hover{color:#E8A33D}pre{white-space:pre-wrap;font-family:Text,sans-serif;background:rgba(20,24,26,0.55);padding:16px}
+.linkmark{display:inline-block;width:18px;height:10px;border:3px solid #E8A33D;border-radius:50%;margin-right:8px}
+a{color:#F2EFE6}a:hover{color:#E8A33D}</style></head><body><main>
+<img src="intro-banner.png" alt="Introduction banner: wet sand, a pressed feather, a young driftwood fire, and a distant ship, with no name anywhere">
+<h1>dlpsim-dlpregextester: Driftwood Bonfire Night Watch</h1>
+<img src="logo.png" alt="Logo: a low crossed driftwood stack with one modest flame, the name lettered underneath"><img src="banner.png" alt="Wordmark banner: the night beach, the fire left of centre, lanterns along the shore path, and the name on the watch post board">
+<img src="scene.svg" alt="Animated scene in three bands">
+<div><button type="button">Test the Pattern</button><button type="button">Mask the Matches</button><button type="button">Read the Watch Log</button></div>
+<h3>Only Matching Lines</h3><h3>Masking Is Not Hiding</h3><h3>One Line at a Time</h3><h3>How a Run Ends</h3>
+<section><h2><span class="linkmark"></span>First plate: the scope, stated narrowly</h2><p>The program receives a regular expression and a plain text file. It prints only the lines where the pattern matches. Each match inside a printed line is highlighted in bold red through ANSI colour codes. Lines without a match never appear. Nothing is generated. No detection rate is computed. No recommendation is offered. The tool tests whether one pattern selects lines in one file. It simulates no leakage scenario and measures no solution effectiveness, whatever the closing tagline of the README opening paragraph claims.</p></section>
+<section><h2><span class="linkmark"></span>Second plate: what a run needs</h2><p>Python alone, with its standard library only. The requirements file says exactly that, in one comment line, and lists no package. There is no install step beyond obtaining the code.</p></section>
+<section><h2><span class="linkmark"></span>Third plate: install, printed and corrected</h2><p>As printed in the README, the install line reads: `git clone https://github.com/ShadowStrikeHQ/dlpsim-dlpregextester`</p><p>Correction: that line points at the wrong organisation, a strike headquarters name that is not this fleet. The corrected line is: `git clone https://github.com/ShadowGuard-AI/dlpsim-dlpregextester`</p><p>The correction is labelled as a correction. Copy the corrected line, not the faulty one.</p></section>
+<section><h2><span class="linkmark"></span>Fourth plate: the working form</h2><p>The interpreter call comes first: python. Then main.py. Then a placeholder for the pattern. Then a placeholder for the sample file path. An optional redact flag may follow. In shape: python main.py PATTERN SAMPLE_FILE, with the redact flag added at the end when masking is wanted. No real pattern from any real rule set is printed here, and no real file name from any real machine is printed here.</p></section>
+<section><h2><span class="linkmark"></span>Fifth plate: the controls in parser order</h2><p>Pattern first, positional, required. File path second, positional, required. Help follows, in the short h form. Ignore case follows, in the short i form or the long form, and matching then disregards letter case. Log level follows, in the short l form or the long form, with five choices running from DEBUG through CRITICAL and INFO as the default. Redact closes the list, a long flag with no short form.</p></section>
+<section><h2><span class="linkmark"></span>Sixth plate: highlighting and masking</h2><p>Highlighting wraps each matched span in bold red ANSI codes for the terminal. Masking is separate and optional. With redact set, each matched value is altered before highlighting: a value of two characters or fewer becomes all asterisks, and a longer value keeps only its first and last characters, the middle replaced by asterisks. The rest of a printed line is not masked. Text standing beside a masked match still prints in clear. That limit stands here, beside the flag, not in a footnote.</p></section>
+<section><h2><span class="linkmark"></span>Seventh plate: endings</h2><p>After the matching lines, one summary line prints, giving the count of matches found and the number of bytes scanned, counted as the utf-8 length of the whole file text. A file holding no matches prints its matching lines as none at all, then the summary with a zero count, and the run ends at exit 0. An empty file prints a plain notice that no content was scanned, and ends at exit 1. A missing file logs an error and ends at exit 1. A pattern the regex engine rejects also ends the run at exit 1, logged as an invalid expression when its first line is tested.</p></section>
+<section><h2><span class="linkmark"></span>Eighth plate: one line at a time</h2><p>The file is split into lines and each line is tested on its own. Anchors at the start or end of a pattern therefore bind to each line, as if multiline matching were on. A pattern written to span a line break can never match, because no single test ever sees two lines together. Testers who miss this will blame the pattern, when the unit of testing is the line.</p></section>
+<section><h2><span class="linkmark"></span>Last plate: licence</h2><p>The README licence line as printed names the strike headquarters organisation as copyright holder: Copyright (c) ShadowStrikeHQ. The corrected attribution context is the fleet organisation, ShadowGuard-AI, and the fault is recorded in Defects below. Beside that line sits a separate fact about the LICENSE file itself: it carries the MIT License, and its holder line gives a pen name together with a single initial for the remaining name. The initial stays unexpanded.</p></section>
+<section><h2>Defects</h2><p>Identity, counted. The install line names ShadowStrikeHQ as the organisation, and the licence line names ShadowStrikeHQ alone as copyright holder: a count of 2 for that name in the README. The count of ShadowGuard-AI in the README is 0, and the count of the unhyphenated form is 0. The README heading also restyles the repo name with capitals as dlpsim-DLPRegexTester, which matches neither the repo name nor the title used on this site. None of these faults is repaired in the preserved record below; the install correction on this site is labelled as a correction, in the open.</p><p>What the code does that the README understates. Matching runs one line at a time, so anchors behave as multiline anchors and a pattern spanning a line break can never match. Redact masks only the matched spans, while the remainder of a printed line reaches the terminal in clear. The README gives no exit behaviour, although the code separates a clean no match run at exit 0 from an empty file, a missing file, and a rejected pattern, each at exit 1. The summary counts bytes as the utf-8 length of the entire file, including lines that were never printed.</p><p>Theme entry record. The entry for this repo is complete in both theme volumes, word for word identical, and no formal completion is owed for it. Two list faults stand in the entry as printed: its element list closes with setting and crew words and a verb fragment that name no drawable thing, and an early direction set the beach fire bobbing at anchor, a motion a fire built on sand cannot perform. That motion belongs to the distant ship alone, and the fire in every picture on this site stays planted on the sand.</p></section>
+<section><h2>The preserved README record</h2><pre>
+![Banner](banner.png)
 
-<main>
-  <section class="rail">
-    <nav aria-label="on this page">
-      <p class="mono"><a href="#run">Run it</a><br>
-      <a href="#files">The files</a><br>
-      <a href="#sheets">The sheets</a><br>
-      <a href="https://github.com/ShadowGuard-AI/dlpsim-dlpregextester">The repo</a></p>
-    </nav>
-    <div>
-      <p class="lede">Dlpsim Dlpregextester is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.</p>
-      <div class="grid">
-        <div class="card pop"><h3>What it is</h3>
-          <p>Dlpsim Dlpregextester: 3 files, 101 counted
-          lines across Python 82, Markdown 16, Text 3. One job, done in the
-          open, in files you can read.</p></div>
-        <div class="card pop"><h3>The biggest piece</h3>
-          <p><code>main.py</code> carries the most
-          lines. If the project grows, that file is where the growth
-          lands first, for better or worse.</p></div>
-        <div class="card pop"><h3>The honest gap</h3>
-          <p>No test files yet. That is the honest gap, and the roadmap in the visuals folder says what the first one should cover.</p></div>
-      </div>
-      <section id="run">
-        <h2>Run it</h2>
-        <p>The repo README has the exact commands for this one. The
-        shape is the shape for most of my projects: clone it, read the
-        top file first so you know what will happen, then run it on
-        something you do not mind breaking.</p>
-        <p class="mono">$ git clone https://github.com/ShadowGuard-AI/dlpsim-dlpregextester.git<br>$ cd dlpsim-dlpregextester</p>
-      </section>
-      
-  <section aria-label="real code">
-    <h2>The code, as it sits in the repo</h2>
-    <p>From <code>main.py</code>, line 8 on. I did
-    not tidy it for the page. What you see is what the file has.</p>
-    <pre class="code"><code>
+# dlpsim-DLPRegexTester
+A command-line tool that takes a regular expression and a sample text file as input, and highlights matches in the text that would trigger a DLP rule based on the regex. It is a regex highlighter only: it generates no data, computes no detection rate, and makes no recommendations. Only the lines containing matches are printed, with each matched value highlighted; lines without matches are not printed, so values the pattern does not select are not echoed. With --redact, the middle of each matched value is masked, keeping only its first and last characters. A plain summary line is printed after the text, stating the matches found and the file bytes scanned. An empty file exits 1 with a plain line; a file with no matches prints a zero matches summary and exits 0. Useful for testing and refining DLP regular expression rules. - Focused on Tools to simulate data leakage scenarios and test the effectiveness of DLP solutions.
 
-def setup_argparse():
-    &quot;&quot;&quot;
-    Sets up the argument parser for the command-line interface.
-    &quot;&quot;&quot;
-    parser = argparse.ArgumentParser(description=&quot;DLP Regex Tester: Highlights matches in a text file based on a regex.&quot;)
-    parser.add_argument(&quot;regex&quot;, help=&quot;The regular expression to test.&quot;)
-    parser.add_argument(&quot;file_path&quot;, help=&quot;The path to the text file to scan.&quot;)
-    parser.add_argument(&quot;-i&quot;, &quot;--ignore-case&quot;, action=&quot;store_true&quot;, help=&quot;Perform case-insensitive matching.&quot;)
-    parser.add_argument(&quot;-l&quot;, &quot;--log-level&quot;, choices=[&#x27;DEBUG&#x27;, &#x27;INFO&#x27;, &#x27;WARNING&#x27;, &#x27;ERROR&#x27;, &#x27;CRITICAL&#x27;], default=&#x27;INFO&#x27;, help=&quot;Set the logging level.&quot;)
-    return parser
+## Install
+`git clone https://github.com/ShadowStrikeHQ/dlpsim-dlpregextester`
 
+## Usage
+`python main.py "\d{3}-\d{2}-\d{4}" test.txt`
+`python main.py "\d{3}-\d{2}-\d{4}" test.txt --redact`
 
-def highlight_matches(text, regex, ignore_case=False):
-    &quot;&quot;&quot;
-    Highlights all matches of the regex in the text.
-    Uses ANSI escape codes to highlight the matches.
-    &quot;&quot;&quot;
-    flags = re.IGNORECASE if ignore_case else 0
-    try:
-        matches = list(re.finditer(regex, text, flags=flags))</code></pre>
-  </section>
-      <section id="files">
-        <h2>The files that matter</h2>
-        <table><tr><th>File</th><th>Lines</th></tr>
-        <tr><td><code>main.py</code></td><td>82</td></tr>
-        <tr><td><code>README.md</code></td><td>16</td></tr>
-        <tr><td><code>requirements.txt</code></td><td>3</td></tr>
-        </table>
-        <p>Names doing the work: <span class="mono">setup_argparse, highlight_matches, main</span>.</p>
-      </section>
-      <section id="sheets">
-        <h2>Drawn by hand</h2>
-        <p>I sketch my projects on notebook paper so I have to
-        understand them well enough to draw them. The full set,
-        with the counts and how they were counted, is the
-        <a href="https://github.com/ShadowGuard-AI/dlpsim-dlpregextester/tree/main/dlpsim-dlpregextester-Visuals">dlpsim-dlpregextester-Visuals</a>
-        folder in the repo. Nothing is drawn over the binder holes.
-        That is a rule, not a style.</p>
-        <div class="shots">
-          <img src="assets/architecture.png" alt="Hand drawn architecture sheet for Dlpsim Dlpregextester">
-          <img src="assets/flowchart.png" alt="Hand drawn flowchart sheet for Dlpsim Dlpregextester">
-          <img src="assets/product-map.png" alt="Hand drawn product map sheet for Dlpsim Dlpregextester">
-        </div>
-      </section>
-    </div>
-  </section>
-</main>
-<footer>
-  <p>Dlpsim Dlpregextester is one of my projects. This page was written
-  from the repo itself on 2026-10-30: the counts are the
-  repo's counts, the code is the repo's code, and the gaps are the
-  repo's gaps.</p>
-</footer>
-</body>
-</html>
+## Parameters
+- `regex`: The regular expression to test.
+- `file_path`: The path to the text file to scan.
+- `-h`: Show help message and exit
+- `-i`, `--ignore-case`: Perform case-insensitive matching.
+- `-l`, `--log-level`: Set the logging level.
+- `--redact`: Mask the middle of each matched value, keeping only its first and last characters.
+
+## License
+Copyright (c) ShadowStrikeHQ</pre></section>
+</main></body></html>
