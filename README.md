@@ -18,7 +18,7 @@ A command-line tool that takes a regular expression and a sample text file as in
 ![Major separator](sep-heavy.svg)
 
 ## Install
-`git clone https://github.com/ShadowStrikeHQ/dlpsim-dlpregextester`
+`git clone https://github.com/ShadowGuard-AI/dlpsim-dlpregextester`
 
 ![Minor separator](sep-light.svg)
 
@@ -45,7 +45,7 @@ A command-line tool that takes a regular expression and a sample text file as in
 ![Minor separator](sep-light.svg)
 
 ## License
-Copyright (c) ShadowStrikeHQ
+This project is released under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ![Major separator](sep-heavy.svg)
 
